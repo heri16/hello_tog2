@@ -136,11 +136,11 @@ module I18n
 
         # Interpolates values into a given string.
         # 
-        #   interpolate "file {{file}} opened by \\{{user}}", :file => 'test.txt', :user => 'Mr. X'  
-        #   # => "file test.txt opened by {{user}}"
+        #   interpolate "file %{file} opened by \\%{user}", :file => 'test.txt', :user => 'Mr. X'
+        #   # => "file test.txt opened by %{user}"
         # 
         # Note that you have to double escape the <tt>\\</tt> when you want to escape
-        # the <tt>{{...}}</tt> key in a string (once for the string and once for the
+        # the <tt>%{...}</tt> key in a string (once for the string and once for the
         # interpolation).
         def interpolate(locale, string, values = {})
           return string unless string.is_a?(String)

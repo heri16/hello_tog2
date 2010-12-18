@@ -22,57 +22,17 @@ ActiveRecord::Schema.define(:version => 20101218022730) do
     t.datetime "created_at"
   end
 
-  create_table "activities", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "action"
-    t.integer  "item_id"
-    t.string   "item_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "activities" because of following ArgumentError
+#   struct size differs
 
-  add_index "activities", ["item_type", "item_id"], :name => "index_activities_on_item_type_and_item_id"
+# Could not dump table "client_applications" because of following ArgumentError
+#   struct size differs
 
-  create_table "client_applications", :force => true do |t|
-    t.string   "name"
-    t.string   "url"
-    t.string   "support_url"
-    t.string   "callback_url"
-    t.string   "key",          :limit => 50
-    t.string   "secret",       :limit => 50
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "comments" because of following ArgumentError
+#   struct size differs
 
-  add_index "client_applications", ["key"], :name => "index_client_applications_on_key", :unique => true
-
-  create_table "comments", :force => true do |t|
-    t.string   "title",            :limit => 50, :default => ""
-    t.text     "comment"
-    t.integer  "commentable_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "commentable_type",               :default => "",    :null => false
-    t.boolean  "approved",                       :default => false
-    t.string   "name"
-    t.string   "email"
-    t.string   "url"
-    t.boolean  "spam",                           :default => false
-  end
-
-  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
-  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
-
-  create_table "config", :force => true do |t|
-    t.string   "key",        :default => "", :null => false
-    t.string   "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "config", ["key"], :name => "key", :unique => true
+# Could not dump table "config" because of following ArgumentError
+#   struct size differs
 
   create_table "folders", :force => true do |t|
     t.string   "name"
@@ -139,28 +99,11 @@ ActiveRecord::Schema.define(:version => 20101218022730) do
     t.datetime "updated_at"
   end
 
-  create_table "oauth_nonces", :force => true do |t|
-    t.string   "nonce"
-    t.integer  "timestamp"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+# Could not dump table "oauth_nonces" because of following ArgumentError
+#   struct size differs
 
-  add_index "oauth_nonces", ["nonce", "timestamp"], :name => "index_oauth_nonces_on_nonce_and_timestamp", :unique => true
-
-  create_table "oauth_tokens", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "type",                  :limit => 20
-    t.integer  "client_application_id"
-    t.string   "token",                 :limit => 50
-    t.string   "secret",                :limit => 50
-    t.datetime "authorized_at"
-    t.datetime "invalidated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "oauth_tokens", ["token"], :name => "index_oauth_tokens_on_token", :unique => true
+# Could not dump table "oauth_tokens" because of following ArgumentError
+#   struct size differs
 
   create_table "plugin_schema_migrations", :id => false, :force => true do |t|
     t.string "plugin_name"
@@ -181,16 +124,8 @@ ActiveRecord::Schema.define(:version => 20101218022730) do
     t.datetime "icon_updated_at"
   end
 
-  create_table "ratings", :force => true do |t|
-    t.integer  "rateable_id"
-    t.string   "rateable_type"
-    t.float    "average_rating"
-    t.integer  "ratings_count"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "ratings", ["rateable_id", "rateable_type"], :name => "index_ratings_on_rateable_id_and_rateable_type"
+# Could not dump table "ratings" because of following ArgumentError
+#   struct size differs
 
   create_table "shares", :force => true do |t|
     t.integer  "user_id"
@@ -203,32 +138,15 @@ ActiveRecord::Schema.define(:version => 20101218022730) do
     t.integer  "status",                       :default => 1
   end
 
-  create_table "taggings", :force => true do |t|
-    t.integer  "tag_id"
-    t.integer  "taggable_id"
-    t.integer  "tagger_id"
-    t.string   "tagger_type"
-    t.string   "taggable_type"
-    t.string   "context"
-    t.datetime "created_at"
-  end
-
-  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+# Could not dump table "taggings" because of following ArgumentError
+#   struct size differs
 
   create_table "tags", :force => true do |t|
     t.string "name"
   end
 
-  create_table "user_ratings", :force => true do |t|
-    t.integer  "rating_id"
-    t.integer  "user_id"
-    t.integer  "score"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "user_ratings", ["user_id", "rating_id"], :name => "index_user_ratings_on_user_id_and_rating_id"
+# Could not dump table "user_ratings" because of following ArgumentError
+#   struct size differs
 
   create_table "users", :force => true do |t|
     t.string   "login"
